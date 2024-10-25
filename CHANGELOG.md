@@ -3,19 +3,55 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## dev [unreleased]
+## 3.2.0 [2024-10-25]
+
+### `Added`
+
+- [#674](https://github.com/nf-core/mag/pull/674) - Added `--longread_adaptertrimming_tool` Where user can chose between porechop_abi (default) and porechop (added by @muabnezor)
+
+### `Changed`
+
+- [#674](https://github.com/nf-core/mag/pull/674) - Changed to porechop-abi as default adapter trimming tool for long reads. User can still use porechop if preferred (added by @muabnezor)
+- [#666](https://github.com/nf-core/mag/pull/666) - Update SPAdes to version 4.0.0, replace both METASPADES and MEGAHIT with official nf-core modules (requested by @elsherbini, fix by @jfy133)
+- [#666](https://github.com/nf-core/mag/pull/666) - Update URLs to GTDB database downloads due to server move (reported by @Jokendo-collab, fix by @jfy133)
+- [#695](https://github.com/nf-core/mag/pull/695) - Updated to nf-core 3.0.2 `TEMPLATE` (by @jfy133)
+- [#695](https://github.com/nf-core/mag/pull/695) - Switch more stable Zenodo link for CheckM data (by @jfy133)
+
+### `Fixed`
+
+- [#674](https://github.com/nf-core/mag/pull/674) - Make longread preprocessing a subworkflow (added by @muabnezor)
+- [#674](https://github.com/nf-core/mag/pull/674) - Add porechop and filtlong logs to multiqc (added by @muabnezor)
+- [#674](https://github.com/nf-core/mag/pull/674) - Change local filtlong module to the official nf-core/filtlong module (added by @muabnezor)
+- [#690](https://github.com/nf-core/mag/pull/690) - MaxBin2 now using the abundance information from different samples rather than an average (reported by @uel3 and fixed by @d4straub)
+- [#698](https://github.com/nf-core/mag/pull/698) - Updated prodigal module to not pick up input symlinks for compression causing pigz errors (reported by @zackhenny, fix by @jfy133 )
+
+### `Dependencies`
+
+| Tool         | Previous version | New version |
+| ------------ | ---------------- | ----------- |
+| Porechop_ABI |                  | 0.5.0       |
+| Filtlong     | 0.2.0            | 0.2.1       |
+| SPAdes       | 3.15.3           | 4.0.0       |
+
+### `Deprecated`
+
+## 3.1.0 [2024-10-04]
 
 ### `Added`
 
 - [#665](https://github.com/nf-core/mag/pull/648) - Add support for supplying pre-made bowtie host reference index (requested by @simone-pignotti, added by @jfy133)
+- [#670](https://github.com/nf-core/mag/pull/670) - Added `--gtdbtk_pplacer_useram` to run GTDBTk in memory mode rather than write to disk (requested by @harper357, fixed by @jfy133)
 
 ### `Changed`
 
 - [#664](https://github.com/nf-core/mag/pull/664) - Update GTDBTk to latest version, with updated column names, update GTDB to release 220 (by @dialvarezs)
+- [#676](https://github.com/nf-core/mag/pull/676) - Added exit code 12 to valid SPAdes retry codes, due to OOM errors from spades-hammer (reported by @bawee, fix by @jfy133)
 
 ### `Fixed`
 
 - [#667](https://github.com/nf-core/mag/pull/667) - Fix pipeline crashing if only CONCOCT selected during binning (reported and fixed by @jfy133)
+- [#670](https://github.com/nf-core/mag/pull/670) - Re-add missing GTDBTk parameters into GTDBTk module (reported by harper357, fixed by @jfy133)
+- [#672](https://github.com/nf-core/mag/pull/673) - Fix GTDB-Tk per-sample TSV files not being published in output directory (reported by @jhayer, fix by @jfy133)
 
 ### `Dependencies`
 
@@ -24,6 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | GTDBTk | 2.3.2            | 2.4.0       |
 
 ### `Deprecated`
+
+- [#670](https://github.com/nf-core/mag/pull/670) - Deprecated `--gtdbtk_pplacer_scratch` due to unintuitive usage (reported by harper357, fixed by @jfy133)
 
 ## 3.0.3 [2024-08-27]
 
